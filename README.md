@@ -20,6 +20,7 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [OOP (Nesne Yönelimli Programlama)](#oop-nesne-yönelimli-programlama)
 * [Yapıcı Metotlar (Constructor)](#yapıcı-metotlar-constructor)
 * [Erişim Belirleyiciler (Access Modifiers)](#erişim-belirleyiciler-access-modifiers)
+* [Koleksiyonlar](#koleksiyonlar)
 
 ### CSharp Nedir
 
@@ -1248,3 +1249,86 @@ class Program
 Bu örnekte "Person" sınıfının farklı üyelerine erişim belirleyicilere göre nasıl erişildiğini görebilirsiniz.
 Özelliklere ve metotlara uygun erişim düzeylerinin belirlenmesi, programın güvenliğini ve düzenini sağlamada önemli bir
 rol oynar.
+
+### Koleksiyonlar
+
+C# dilinde koleksiyonlar, verileri gruplamak ve yönetmek için kullanılan yapılardır. Koleksiyonlar, tek bir değişken
+altında birden çok değeri tutabilen dinamik yapılar olarak düşünülebilir. C# dilinde birçok farklı koleksiyon türü
+bulunmaktadır ve bu koleksiyonlar System.Collections ve System.Collections.Generic isim alanları altında bulunur.
+
+**Neden Koleksiyonlar Kullanılır?**
+
+Koleksiyonlar, programlama projelerinde verileri düzenlemek, saklamak, işlemek ve yönetmek için oldukça önemli ve
+kullanışlıdır. Tek bir değişken altında birden çok değeri saklamak, veri yönetimini kolaylaştırır ve kodun daha etkili
+ve okunabilir olmasını sağlar. Koleksiyonlar, veri yapılarını dinamik olarak genişletme ve küçültme yeteneği sağlar,
+böylece değişken boyutlu verilerin tutulması ve işlenmesi kolaylaşır.
+
+**C# Koleksiyon Türleri**
+
+1. **List:** Dinamik boyutlu bir dizi olarak düşünülebilir. Elemanları sıralı bir şekilde tutar ve birden fazla aynı
+   değere
+   izin verir.
+
+2. **Array:** Diziler, sabit boyutlu veri koleksiyonlarıdır. Bir dizi oluşturulduğunda boyutu belirlenir ve sonradan
+   değiştirilemez.
+
+3. **Dictionary:** Anahtar-değer çiftleri şeklinde veri tutar. Anahtarlar benzersiz olmalıdır ve her anahtar bir değere
+   karşılık gelir.
+
+4. **HashSet:** Benzersiz elemanları tutan ve sırasız bir koleksiyondur. Yineleme veya indeksleme yapılamaz.
+
+5. **Queue:** İlk giren ilk çıkar (First-In-First-Out - FIFO) prensibiyle çalışan koleksiyondur.
+
+6. **Stack:** Son giren ilk çıkar (Last-In-First-Out - LIFO) prensibiyle çalışan koleksiyondur.
+
+7. **LinkedList:** Bağlı liste veri yapısını temsil eder. Elemanlar düğümler halinde tutulur ve sırasızdır.
+
+**C# Koleksiyonlar Kullanımı ve Örnek:**
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // List kullanımı
+        List<string> names = new List<string>();
+        names.Add("Alice");
+        names.Add("Bob");
+        names.Add("Charlie");
+
+        // Array kullanımı
+        int[] numbers = new int[] { 1, 2, 3, 4, 5 };
+
+        // Dictionary kullanımı
+        Dictionary<string, int> ages = new Dictionary<string, int>();
+        ages.Add("Alice", 30);
+        ages.Add("Bob", 25);
+        ages.Add("Charlie", 35);
+
+        // HashSet kullanımı
+        HashSet<string> uniqueNames = new HashSet<string>();
+        uniqueNames.Add("Alice");
+        uniqueNames.Add("Bob");
+        uniqueNames.Add("Alice"); // Benzersiz elemanlar olduğu için bu tekrar eklenmeyecektir.
+
+        // Queue kullanımı
+        Queue<string> queue = new Queue<string>();
+        queue.Enqueue("Alice");
+        queue.Enqueue("Bob");
+        queue.Enqueue("Charlie");
+
+        // Stack kullanımı
+        Stack<string> stack = new Stack<string>();
+        stack.Push("Alice");
+        stack.Push("Bob");
+        stack.Push("Charlie");
+    }
+}
+```
+
+Bu örnekte farklı C# koleksiyon türlerinin nasıl kullanıldığını görebilirsiniz. Her koleksiyon türü, farklı veri
+yapılarını temsil eder ve farklı senaryolarda kullanılabilir. Koleksiyonlar, verilerin düzenlenmesi ve işlenmesi için
+güçlü bir araçtır ve C# dilinde veri yönetimini kolaylaştırmada önemli bir rol oynar.
