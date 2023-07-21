@@ -21,6 +21,8 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Yapıcı Metotlar (Constructor)](#yapıcı-metotlar-constructor)
 * [Erişim Belirleyiciler (Access Modifiers)](#erişim-belirleyiciler-access-modifiers)
 * [Koleksiyonlar](#koleksiyonlar)
+* [Hata Yönetimi](#hata-yönetimi)
+* [Hata Fırlatma](#hata-fırlatma)
 
 ### CSharp Nedir
 
@@ -1332,3 +1334,94 @@ class Program
 Bu örnekte farklı C# koleksiyon türlerinin nasıl kullanıldığını görebilirsiniz. Her koleksiyon türü, farklı veri
 yapılarını temsil eder ve farklı senaryolarda kullanılabilir. Koleksiyonlar, verilerin düzenlenmesi ve işlenmesi için
 güçlü bir araçtır ve C# dilinde veri yönetimini kolaylaştırmada önemli bir rol oynar.
+
+### Hata Yönetimi
+
+C# dilinde hata yönetimi, programın çalışması sırasında oluşabilecek istisnai durumlarla başa çıkma sürecini ifade eder.
+Hata yönetimi, uygulamanın beklenmeyen durumlara karşı daha sağlam ve güvenilir olmasını sağlar. C# dilinde hata
+yönetimi, istisnai durumlarla başa çıkmak için try-catch blokları kullanılarak gerçekleştirilir.
+
+**Neden Hata Yönetimi Kullanılır?**
+
+Hata yönetimi, programın beklenmedik durumlara karşı dirençli olmasını sağlar ve çökmelerin önüne geçer. Uygulama
+çalışırken oluşan hataların kullanıcıya anlamlı bir şekilde bildirilmesini ve uygulamanın düzgün bir şekilde
+sonlanmasını sağlar. Hata yönetimi sayesinde hatanın nedeni tespit edilebilir ve gerekli önlemler alınabilir.
+
+**Try-Catch Blokları**
+
+Hata yönetimi için temel yapı, try-catch bloklarıdır. Bir try bloğu içerisine potansiyel olarak hata üretebilecek kodlar
+yazılır. Eğer bir hata oluşursa, bu hataları yakalayarak işlemek ve kullanıcıya veya loglara uygun mesajlar vermek için
+catch bloğu kullanılır.
+
+Örneğin:
+
+```csharp
+try
+{
+    // Hata oluşturabilecek kodlar buraya yazılır
+}
+catch (Exception ex)
+{
+    // Hata oluştuğunda buradaki kodlar çalışır
+    Console.WriteLine("Hata Mesajı: " + ex.Message);
+    // Hatanın ayrıntıları için ex.StackTrace kullanılabilir.
+}
+finally
+{
+    // Her zaman çalışacak olan kod bloğu (opsiyonel)
+}
+```
+
+Hata yönetimi, uygulama güvenliği ve kullanıcı deneyimi açısından önemli bir parçadır. Try-catch blokları, hata
+yönetiminin temel yapılarından biridir ve C# dilinde istisnai durumlarla başa çıkmak için yaygın olarak kullanılır.
+
+### Hata Fırlatma
+
+C# dilinde hata fırlatma, uygulama içinde özel durumlara ilişkin hata mesajları oluşturarak, istisnai durumları kontrol
+eden ve yöneten bir mekanizmadır. Programın belirli koşullar altında öngörülemeyen bir hata durumunda özel bir hata
+mesajı fırlatması için kullanılır. Hata fırlatmak, mevcut istisnai durumları yakalamak ve uygun şekilde işlemek için
+try-catch blokları ile birlikte kullanılabilir.
+
+**Neden Hata Fırlatma Kullanılır?**
+
+Hata fırlatma, uygulamada özel durumlar için belirli hata mesajlarının oluşturulmasını sağlar. Örneğin, bir metoda
+geçersiz bir parametre verildiğinde veya belirli bir durum karşılaşıldığında hata fırlatarak, kodun daha hata güvenli
+olmasını sağlar. Bu sayede, hata durumlarında programın daha anlaşılır ve düzgün bir şekilde çalışması sağlanır.
+
+**Hata Fırlatma Kullanımı**
+
+Hata fırlatmak için "throw" anahtar kelimesi kullanılır. Genellikle bir "if" veya "switch" yapısı içerisinde belirli
+koşullar sağlandığında hata fırlatılır.
+
+Örneğin:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            Console.WriteLine("Yaşınızı girin:");
+            int age = Convert.ToInt32(Console.ReadLine());
+
+            if (age < 0)
+            {
+                throw new Exception("Yaş negatif olamaz!");
+            }
+
+            Console.WriteLine("Yaşınız: " + age);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Hata: " + ex.Message);
+        }
+    }
+}
+```
+
+Hata fırlatma, uygulama içinde istenmeyen durumları yakalamak ve özel hata mesajları oluşturmak için kullanışlı bir
+yöntemdir. Doğru kullanıldığında, hata fırlatmak kodun daha anlaşılır ve yönetilebilir olmasını sağlar. Ancak, gereksiz
+yere hata fırlatmak performansı olumsuz etkileyebilir, bu nedenle dikkatli bir şekilde kullanılmalıdır.
