@@ -1,0 +1,32 @@
+﻿const string message = "Hello World, this is a sample message";
+
+var messageLength = message.Length;
+var toLowerMessage = message.ToLower();
+var toUpperMessage = message.ToUpper();
+var startTrimMessage = message.TrimStart();
+var endTrimMessage = message.TrimEnd();
+var trimMessage = message.Trim();
+var splitMessage = message.Split(' ');
+var startsWithMessage = message.StartsWith("Hello");
+var endsWithMessage = message.EndsWith("message");
+var containsMessage = message.Contains("World");
+var indexOfMessage = message.IndexOf("World");
+var lastIndexOfMessage = message.LastIndexOf("World");
+var replaceMessage = message.Replace("World", "Universe");
+var substringMessage = message.Substring(6, 5);
+
+Console.WriteLine($"Message: {message}");
+Console.WriteLine($"Message Length: {messageLength}");
+Console.WriteLine($"Message ToLower: {toLowerMessage}");
+Console.WriteLine($"Message ToUpper: {toUpperMessage}");
+Console.WriteLine($"Message TrimStart: {startTrimMessage}");
+Console.WriteLine($"Message TrimEnd: {endTrimMessage}");
+Console.WriteLine($"Message Trim: {trimMessage}");
+Console.WriteLine($"Message Split: {string.Join(", ", splitMessage)}");
+Console.WriteLine($"Message StartsWith Hello: {startsWithMessage}");
+Console.WriteLine($"Message EndsWith message: {endsWithMessage}");
+Console.WriteLine($"Message Contains World: {containsMessage}");
+Console.WriteLine($"Message IndexOf World: {indexOfMessage}");
+Console.WriteLine($"Message LastIndexOf World: {lastIndexOfMessage}");
+Console.WriteLine($"Message Replace World with Universe: {replaceMessage}");
+Console.WriteLine($"Message Substring from 6 to 5: {substringMessage}");
