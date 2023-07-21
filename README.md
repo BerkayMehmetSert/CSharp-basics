@@ -1425,3 +1425,11 @@ class Program
 Hata fırlatma, uygulama içinde istenmeyen durumları yakalamak ve özel hata mesajları oluşturmak için kullanışlı bir
 yöntemdir. Doğru kullanıldığında, hata fırlatmak kodun daha anlaşılır ve yönetilebilir olmasını sağlar. Ancak, gereksiz
 yere hata fırlatmak performansı olumsuz etkileyebilir, bu nedenle dikkatli bir şekilde kullanılmalıdır.
+
+## Kaynaklar
+
+- [BTK Akademi](https://www.btkakademi.gov.tr/portal/course/javascript-temelleri-25317)
+
+## Lisans
+
+Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için [LICENSE ©](LICENSE) dosyasına bakabilirsiniz.
