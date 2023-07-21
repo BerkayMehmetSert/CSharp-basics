@@ -16,6 +16,7 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Referans Tipler](#referans-tipler)
 * [Operatörler](#operatörler)
 * [Koşullu İfadeler](#koşullu-ifadeler)
+* [Döngüler](#döngüler)
 
 ### CSharp Nedir
 
@@ -810,3 +811,93 @@ Koşullu ifadeler, C# dilinde programların farklı şartlara göre farklı davr
 mantıklı koşullar belirleyerek, programların esnek ve akıllıca davranışlar sergilemesini sağlayabilirsiniz. Koşullu
 ifadeler, kullanıcıdan alınan girdilere veya çeşitli verilere bağlı olarak programın akışını yönlendirmek ve karar
 vermek için yaygın olarak kullanılır.
+
+### Döngüler
+
+C# dilinde döngüler, belirli bir işlemi tekrarlayarak çalıştırmak için kullanılan yapılardır. Döngüler, belirli koşullar
+sağlandığı sürece veya belirli sayıda tekrar gerçekleşene kadar çalışır. Döngüler, programların tekrar eden görevleri
+etkin bir şekilde yerine getirmesine olanak tanır ve kodun daha az tekrar eden, daha temiz ve daha kolay yönetilebilir
+olmasını sağlar.
+
+1. **for Döngüsü:**
+
+for döngüsü, bir başlangıç değeriyle başlayarak, belirtilen koşul sağlandığı sürece belirli bir adımda tekrarlanır.
+Döngü içindeki kod bloğu her iterasyonda çalıştırılır.
+
+Örneğin:
+
+```csharp
+for (int i = 1; i <= 5; i++)
+{
+    Console.WriteLine("Döngü tekrarı: " + i);
+}
+```
+
+2. **while Döngüsü:**
+
+while döngüsü, belirtilen koşul sağlandığı sürece tekrarlanır. Döngü başlamadan önce koşul kontrol edilir ve koşul doğru
+ise döngü içindeki kod bloğu çalıştırılır.
+
+Örneğin:
+
+```csharp
+int count = 0;
+while (count < 5)
+{
+    Console.WriteLine("Döngü tekrarı: " + count);
+    count++;
+}
+```
+
+3. **do-while Döngüsü:**
+
+do-while döngüsü, while döngüsüne benzer, ancak koşul döngü bloğunun sonunda kontrol edilir. Bu nedenle, döngü bloğu en
+az bir kez çalıştırılır ve koşul daha sonra kontrol edilir.
+
+Örneğin:
+
+```csharp
+int count = 0;
+do
+{
+    Console.WriteLine("Döngü tekrarı: " + count);
+    count++;
+} while (count < 5);
+```
+
+4. **foreach Döngüsü:**
+
+foreach döngüsü, koleksiyonların (dizi, liste vb.) elemanları üzerinde dolaşmak için kullanılır. Her iterasyonda,
+koleksiyondaki bir eleman alınır ve döngü içindeki kod bloğu çalıştırılır.
+
+Örneğin:
+
+```csharp
+string[] names = { "Alice", "Bob", "Carol" };
+foreach (string name in names)
+{
+    Console.WriteLine("İsim: " + name);
+}
+```
+
+5. **break ve continue İfadeleri:**
+
+break ifadesi, döngüyü tamamen sonlandırmak için kullanılırken, continue ifadesi, döngünün geri kalan kısmını atlayarak
+bir sonraki iterasyona geçmek için kullanılır.
+
+Örneğin:
+
+```csharp
+for (int i = 1; i <= 5; i++)
+{
+    if (i == 3)
+        continue; // 3. tekrarı atla
+    Console.WriteLine("Döngü tekrarı: " + i);
+    if (i == 4)
+        break; // Döngüyü sonlandır
+}
+```
+
+Döngüler, programların tekrar eden işlemleri gerçekleştirmek için önemli bir yapıdır. Döngüler sayesinde verilerinizi
+işleyebilir, koleksiyonlar üzerinde dolaşabilir ve belirli şartlar sağlandığında işlemleri durdurabilirsiniz. C# dilinde
+farklı döngü yapıları sayesinde, kodlarınızı daha az tekrar eden, daha düzenli ve daha etkin hale getirebilirsiniz.
