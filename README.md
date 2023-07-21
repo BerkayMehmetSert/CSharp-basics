@@ -17,6 +17,9 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Operatörler](#operatörler)
 * [Koşullu İfadeler](#koşullu-ifadeler)
 * [Döngüler](#döngüler)
+* [OOP (Nesne Yönelimli Programlama)](#oop-nesne-yönelimli-programlama)
+* [Yapıcı Metotlar (Constructor)](#yapıcı-metotlar-constructor)
+* [Erişim Belirleyiciler (Access Modifiers)](#erişim-belirleyiciler-access-modifiers)
 
 ### CSharp Nedir
 
@@ -901,3 +904,347 @@ for (int i = 1; i <= 5; i++)
 Döngüler, programların tekrar eden işlemleri gerçekleştirmek için önemli bir yapıdır. Döngüler sayesinde verilerinizi
 işleyebilir, koleksiyonlar üzerinde dolaşabilir ve belirli şartlar sağlandığında işlemleri durdurabilirsiniz. C# dilinde
 farklı döngü yapıları sayesinde, kodlarınızı daha az tekrar eden, daha düzenli ve daha etkin hale getirebilirsiniz.
+
+### OOP (Nesne Yönelimli Programlama)
+
+C# dilinde nesne yönelimli programlama (Object-Oriented Programming - OOP), programların gerçek dünya nesnelerini ve
+kavramlarını modellemek için kullanılan bir programlama paradigmasıdır. OOP, kodun düzenlenmesini, bakımını ve
+genişletilmesini kolaylaştırırken, daha anlaşılır, modüler ve yeniden kullanılabilir yazılım geliştirmeyi sağlar.
+
+OOP'nin temel amacı, verileri ve bu veriler üzerinde işlemleri birleştiren nesneleri oluşturmaktır. Her nesne, kendi
+özelliklerini (veri elemanları) ve davranışlarını (metotlar) içerir. C# dilinde nesne yönelimli programlama
+kullanabilmek için sınıflar ve nesnelerin tanımlanması gereklidir.
+
+1. **Sınıflar ve Nesneler**
+
+Sınıflar, nesnelerin taslağıdır ve bir veri türü olarak düşünülebilir. Sınıflar, içerisinde özellikleri (alanlar) ve
+metotları barındırır. Bir sınıfı kullanarak, o sınıfa ait nesneler oluşturulabilir.
+
+Örneğin:
+
+```csharp
+// Örnek bir Sınıf tanımı
+class Person
+{
+    // Sınıf özellikleri (alanlar)
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    // Sınıf metotları
+    public void SayHello()
+    {
+        Console.WriteLine("Merhaba, ben " + Name + " ve " + Age + " yaşındayım.");
+    }
+}
+
+// Sınıftan bir nesne oluşturma
+Person person1 = new Person();
+person1.Name = "Alice";
+person1.Age = 30;
+person1.SayHello(); // Çıktı: Merhaba, ben Alice ve 30 yaşındayım.
+```
+
+2. **Kalıtım (Inheritance)**
+
+Kalıtım, bir sınıfın başka bir sınıftan türetilmesini sağlayan bir OOP kavramıdır. Bir sınıf, başka bir sınıftan
+türetilerek, türetilen sınıfın özelliklerini ve metotlarını miras alır.
+
+Örneğin:
+
+```csharp
+// Ana sınıf: Ürün
+class Product
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Brand { get; set; }
+
+    public void ShowDetails()
+    {
+        Console.WriteLine("Ürün Adı: " + Name);
+        Console.WriteLine("Fiyatı: " + Price);
+        Console.WriteLine("Marka: " + Brand);
+    }
+}
+
+// Türetilmiş sınıf: Elektronik Ürünler
+class Electronics : Product
+{
+    public string Category { get; set; }
+
+    public void ShowCategory()
+    {
+        Console.WriteLine("Kategori: " + Category);
+    }
+}
+
+// Türetilmiş sınıf: Giyim Ürünleri
+class Clothing : Product
+{
+    public string Size { get; set; }
+
+    public void ShowSize()
+    {
+        Console.WriteLine("Beden: " + Size);
+    }
+}
+```
+
+3. **Kapsülleme (Encapsulation)**
+
+Kapsülleme, sınıfın verilerini ve metotlarını bir kapsül (birim) altında toplama işlemidir. Sınıf içerisindeki verilere
+doğrudan erişim engellenir ve sınıfın metotları aracılığıyla erişim ve işlemler yapılır.
+
+Örneğin:
+
+```csharp
+class BankAccount
+{
+    private decimal balance;
+
+    public void Deposit(decimal amount)
+    {
+        balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (balance >= amount)
+        {
+            balance -= amount;
+        }
+        else
+        {
+            Console.WriteLine("Yetersiz bakiye!");
+        }
+    }
+
+    public decimal GetBalance()
+    {
+        return balance;
+    }
+}
+
+BankAccount account = new BankAccount();
+account.Deposit(1000);
+account.Withdraw(500);
+Console.WriteLine("Bakiye: " + account.GetBalance()); // Çıktı: Bakiye: 500
+```
+
+4. **Çok Biçimlilik (Polymorphism)**
+
+Çok biçimlilik, bir sınıfın birden fazla şekilde davranabilmesini sağlayan bir OOP kavramıdır. Bir sınıf, başka
+sınıflardan türetilebilir ve türetilen sınıfların metotlarını ezerek kendi davranışlarını tanımlayabilir.
+
+Örneğin:
+
+```csharp
+// Ana sınıf: MenuOption
+abstract class MenuOption
+{
+    public string Title { get; set; }
+
+    public MenuOption(string title)
+    {
+        Title = title;
+    }
+
+    public abstract void Execute();
+}
+
+// Türetilmiş sınıf: CheckBalance
+class CheckBalance : MenuOption
+{
+    public CheckBalance() : base("Bakiye Sorgula")
+    {
+    }
+
+    public override void Execute()
+    {
+        Console.WriteLine("Bakiyeniz: 5000 TL");
+    }
+}
+
+// Türetilmiş sınıf: MakePayment
+class MakePayment : MenuOption
+{
+    public MakePayment() : base("Ödeme Yap")
+    {
+    }
+
+    public override void Execute()
+    {
+        Console.WriteLine("Ödeme işlemi başarılı.");
+    }
+}
+
+// Türetilmiş sınıf: TransferMoney
+class TransferMoney : MenuOption
+{
+    public TransferMoney() : base("Para Transferi Yap")
+    {
+    }
+
+    public override void Execute()
+    {
+        Console.WriteLine("Para transferi işlemi başarılı.");
+    }
+}
+```
+
+### Yapıcı Metotlar (Constructor)
+
+C# dilinde constructor (yapıcı metot), bir sınıftan nesne oluşturulurken, nesne üzerinde yapılacak başlangıç işlemlerini
+gerçekleştiren özel bir metottur. Constructor, sınıfın adıyla aynı olan bir metottur ve sınıfın bir nesnesi
+oluşturulduğunda otomatik olarak çalışır.
+
+**Neden Constructor Kullanılır?**
+
+Constructorlar, nesnelerin başlangıç durumunu ayarlamak ve başlangıç değerlerini belirlemek için kullanılır. Sınıfın
+özelliklerine veya diğer üyelerine başlangıç değeri atamak, nesne oluşturulduğunda yapılacak işlemleri belirlemek gibi
+amaçlarla kullanılabilir. Nesne oluşturulurken özel başlangıç durumları gerektiren durumlar için constructorlar oldukça
+faydalıdır.
+
+**Constructor Kullanımı**
+
+Bir constructor oluşturmak için sınıfın adını kullanırız ve parametrelerle birlikte tanımlarız. Constructor, geri dönüş
+türü olmayan ve sınıfın adıyla birebir aynı olan bir metottur.
+
+Örneğin:
+
+```csharp
+class Person
+{
+    public string Name;
+    public int Age;
+
+    // Parametre alan constructor
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Parametresiz constructor (default constructor)
+    public Person()
+    {
+        Name = "Belirtilmedi";
+        Age = 0;
+    }
+}
+```
+
+Yukarıdaki örnekte, "Person" sınıfı iki farklı constructor'a sahiptir. İlki parametre alan bir constructor ve nesne
+oluşturulurken "name" ve "age" parametrelerini alarak nesne özelliklerini bu değerlerle başlatır. İkincisi ise parametre
+almayan bir constructor (default constructor) ve nesne oluşturulduğunda özelliklere varsayılan değerler atanmasını
+sağlar.
+
+**Constructor Çeşitleri**
+
+1. **Parametre Alan Constructor:** Bir veya daha fazla parametre alarak nesne özelliklerini bu değerlerle başlatır.
+   Birden fazla constructor oluşturulabilir ve farklı sayıda veya türde parametreler alabilirler.
+
+2. **Parametresiz Constructor** (Default Constructor): Parametre almadan nesne özelliklerine varsayılan değerler
+   atanmasını sağlar. Eğer farklı constructor'lar tanımlanmışsa parametresiz constructor varsayılan olarak otomatik
+   olarak eklenmez.
+
+Constructor Kullanımı:
+
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Parametre alan constructor kullanımı
+        Person person1 = new Person("Alice", 30);
+        Console.WriteLine(person1.Name); // Çıktı: Alice
+        Console.WriteLine(person1.Age);  // Çıktı: 30
+
+        // Parametresiz constructor kullanımı
+        Person person2 = new Person();
+        Console.WriteLine(person2.Name); // Çıktı: Belirtilmedi
+        Console.WriteLine(person2.Age);  // Çıktı: 0
+    }
+}
+```
+
+Bu örnekte "Person" sınıfından nesneler oluştururken hem parametre alan constructor hem de parametresiz constructor
+kullanımını görebilirsiniz. Constructorlar sayesinde nesnelerin doğru şekilde başlangıç değerleri ile oluşturulmasını ve
+kullanılmasını sağlayabiliriz.
+
+### Erişim Belirleyiciler (Access Modifiers)
+
+C# dilinde access modifiers (erişim belirleyiciler), sınıf üyelerinin (alanlar, özellikler, metotlar ve diğer üyeler)
+erişim düzeyini kontrol etmek için kullanılan anahtar kelimelerdir. Bu belirleyiciler, sınıf üyelerinin hangi
+kısımlardan erişilebileceğini ve hangi kısımlardan gizleneceğini belirler. C# dilinde dört farklı erişim belirleyici
+bulunmaktadır:
+
+1. **public:** Her yerden erişime izin verir. Yani, bu üyelere sınıfın içinden ve dışından erişilebilir.
+
+2. **private:** Sadece aynı sınıf içerisindeki diğer üyelerden erişime izin verir. Dışarıdan erişime kapalıdır.
+
+3. **protected:** Sadece aynı sınıf içerisindeki diğer üyeler ve bu sınıftan türetilmiş alt sınıflardaki üyeler
+   tarafından erişime izin verir. Dışarıdan erişime kapalıdır.
+
+4. **internal:** Yalnızca aynı proje (assembly) içerisinden erişime izin verir. Farklı projelerden erişime kapalıdır.
+
+**Neden Erişim Belirleyiciler Kullanılır?**
+
+Erişim belirleyiciler, kodun güvenliğini ve düzenini sağlamak için kullanılır. Bazı üyelerin sadece belirli kısımlardan
+erişilmesini isteyebiliriz ve diğer kısımlardan gizlemek isteyebiliriz. Aynı zamanda, sınıfın iç yapısını gizlemek ve
+nesne yönelimli programlamanın temel prensiplerinden biri olan "enkapsülasyon"u (kapsülleme) uygulamak için erişim
+belirleyiciler kullanılır.
+
+**Erişim Belirleyicilerin Kullanımı**
+
+Erişim belirleyiciler, sınıfın üye tanımlarının önüne eklenerek kullanılır.
+
+Örneğin:
+
+```csharp
+class Person
+{
+    // public erişim belirleyici ile her yerden erişilebilen bir özellik
+    public string Name { get; set; }
+
+    // private erişim belirleyici ile sadece sınıf içinden erişilebilen bir özellik
+    private int age;
+
+    // protected erişim belirleyici ile sadece sınıf ve alt sınıflardan erişilebilen bir metot
+    protected void ShowAge()
+    {
+        Console.WriteLine("Yaş: " + age);
+    }
+
+    // internal erişim belirleyici ile yalnızca aynı proje içinden erişilebilen bir metot
+    internal void DoSomething()
+    {
+        // ...
+    }
+}
+```
+
+Yukarıdaki örnekte, "Person" sınıfında çeşitli erişim belirleyicilerle üye tanımları görülmektedir. "Name" özelliği
+public erişim belirleyici ile her yerden erişilebilirken, "age" alanı private erişim belirleyici ile sadece sınıf
+içinden erişilebilir. "ShowAge" metodu protected erişim belirleyici ile sınıf içinden ve alt sınıflardan
+erişilebilirken, "DoSomething" metodu ise internal erişim belirleyici ile yalnızca aynı proje içinden erişilebilir.
+
+**Erişim Belirleyicilerin Kullanımı ve Örnek:**
+
+ ```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        Person person = new Person();
+        person.Name = "Alice"; // public erişim belirleyicisi ile erişilebilir
+        // person.age = 30;    // private erişim belirleyicisi ile erişilemez (Hata verir)
+        // person.ShowAge();   // protected erişim belirleyicisi ile erişilemez (Hata verir)
+        person.DoSomething(); // internal erişim belirleyicisi ile erişilebilir
+    }
+}
+```
+
+Bu örnekte "Person" sınıfının farklı üyelerine erişim belirleyicilere göre nasıl erişildiğini görebilirsiniz.
+Özelliklere ve metotlara uygun erişim düzeylerinin belirlenmesi, programın güvenliğini ve düzenini sağlamada önemli bir
+rol oynar.
