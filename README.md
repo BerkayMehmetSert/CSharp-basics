@@ -14,6 +14,7 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Null Değerli Türler](#null-değerli-türler)
 * [Diziler](#diziler)
 * [Referans Tipler](#referans-tipler)
+* [Operatörler](#operatörler)
 
 ### CSharp Nedir
 
@@ -582,3 +583,106 @@ tipleri, bellek kullanımı ve performans açısından dikkatli kullanılmalı v
 büyük veri yapıları ve nesneler için referans tipleri kullanmak daha uygun olabilir. Ancak dikkatli olunmadığı takdirde
 null referans hataları gibi problemlerle karşılaşmak mümkündür. Bu nedenle, null kontrolü ve doğru kullanımı dikkate
 alarak referans tipleri ile çalışmak önemlidir.
+
+### Operatörler
+
+C# dilinde operatörler, değişkenler ve değerler üzerinde çeşitli işlemleri gerçekleştirmek için kullanılan sembollerdir.
+C# dilinde farklı türde operatörler bulunur ve bu operatörler, matematiksel işlemlerden mantıksal işlemlere kadar geniş
+bir yelpazede kullanılabilir. Operatörler, programlamanın temel yapı taşlarından biridir ve verilerin manipüle edilmesi
+ve işlenmesi için önemli bir rol oynar.
+
+1. **Aritmetik Operatörler:**
+
+Aritmetik operatörler, matematiksel işlemler yapmak için kullanılır.
+
+Örneğin:
+
+```csharp
+int x = 10;
+int y = 5;
+
+int sum = x + y; // Toplama, sonuç: 15
+int difference = x - y; // Çıkarma, sonuç: 5
+int product = x * y; // Çarpma, sonuç: 50
+int quotient = x / y; // Bölme, sonuç: 2
+int remainder = x % y; // Mod alma, sonuç: 0
+```
+
+2. **Atama Operatörleri:**
+
+Atama operatörleri, değişkenlere değer atamak için kullanılır.
+
+Örneğin:
+
+```csharp
+int x = 10;
+int y;
+
+y = x; // Değer atama
+```
+
+3. **Karşılaştırma Operatörleri:**
+
+Karşılaştırma operatörleri, iki değeri karşılaştırmak için kullanılır ve sonuç olarak true veya false döner.
+
+Örneğin:
+
+```csharp
+int x = 10;
+int y = 5;
+
+bool isEqual = x == y; // Eşit mi? false
+bool isNotEqual = x != y; // Eşit değil mi? true
+bool isGreater = x > y; // Büyük mü? true
+bool isLess = x < y; // Küçük mü? false
+bool isGreaterOrEqual = x >= y; // Büyük veya eşit mi? true
+bool isLessOrEqual = x <= y; // Küçük veya eşit mi? false
+```
+
+4. **Mantıksal Operatörler:**
+
+Mantıksal operatörler, boolean (true/false) değerler üzerinde mantıksal işlemler yapmak için kullanılır.
+
+Örneğin:
+
+```csharp
+bool a = true;
+bool b = false;
+
+bool resultAnd = a && b; // VE, sonuç: false
+bool resultOr = a || b; // VEYA, sonuç: true
+bool resultNot = !a; // DEĞİL, sonuç: false
+```
+
+5. **Artırma ve Azaltma Operatörleri:**
+
+Artırma ve azaltma operatörleri, bir değişkenin değerini 1 artırmak veya azaltmak için kullanılır.
+
+Örneğin:
+
+```csharp
+int x = 5;
+
+x++; // Post-increment, x = 6
+++x; // Pre-increment, x = 7
+
+x--; // Post-decrement, x = 6
+--x; // Pre-decrement, x = 5
+```
+
+6. **Koşul Operatörü:**
+
+Koşul operatörü (ternary operatör), bir koşulu değerlendirir ve sonuca göre farklı değerleri döndürür.
+
+Örneğin:
+
+```csharp
+int x = 10;
+int y = 5;
+
+int result = (x > y) ? x : y; // x, y'den büyükse x'i, değilse y'yi döndürür
+```
+
+C# dilinde daha birçok operatör bulunmaktadır. Operatörler, programların veri işleme ve kontrol akışını yönetmek için
+temel araçlardır. Doğru ve etkili bir şekilde operatörleri kullanarak, programlama dili olan C#'da çeşitli işlemleri
+gerçekleştirebilir ve daha karmaşık uygulamalar oluşturabilirsiniz.
