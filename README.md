@@ -12,6 +12,8 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Veri Tipleri ve Kullanımı](#veri-tipleri-ve-kullanımı)
 * [Veri Dönüşümleri](#veri-dönüşümleri)
 * [Null Değerli Türler](#null-değerli-türler)
+* [Diziler](#diziler)
+* [Referans Tipler](#referans-tipler)
 
 ### CSharp Nedir
 
@@ -392,3 +394,191 @@ int totalCount = 0; // Normal değer türü kullanımı
 Nullable type, C# dilinde değer türlerinin null değerini kabul etmesini sağlayan ve veri alışverişi sırasında kullanılan
 önemli bir özelliktir. Doğru kullanıldığında, null değerleriyle çalışmak daha güvenli ve esnek kod yazmanıza yardımcı
 olabilir. Ancak, gereksiz kullanımdan kaçınarak performans açısından da dikkatli olunmalıdır.
+
+### Diziler
+
+C# dilinde diziler, aynı türdeki öğeleri içeren ve indeks numaralarıyla erişilen veri yapılarıdır. Diziler, belirli bir
+boyutta tanımlanır ve boyutları değiştirilemez. Diziler, birden çok değeri tutmak ve bu değerlere kolayca erişmek için
+kullanılır. C# dilinde diziler, referans türüdür, yani dizinin kendisi bellekte bir referans olarak saklanır ve diziyi
+oluşturan öğeler başka bellek alanlarında saklanır.
+
+**Dizi Tanımlama ve Oluşturma**
+
+C# dilinde bir dizi tanımlamak için, veri türü belirtilir ve ardından [] işareti ile dizi simgelenir. Daha sonra diziye
+bir isim verilir ve bellekte bir alan ayrılır. Dizi oluşturulurken, eleman sayısını ve değerleri belirtmek için süslü
+parantezler {} kullanılır.
+
+Örneğin:
+
+```csharp
+// Integer türünde bir dizi tanımlama ve oluşturma
+int[] numbers = new int[5]; // 5 elemanlı bir dizi oluşturuldu
+
+// Değerlerle dizi oluşturma
+int[] scores = { 85, 90, 78, 95, 88 }; // 5 elemanlı bir dizi oluşturuldu ve değerler atanıyor
+```
+
+**Dizi Elemanlarına Erişim ve Değiştirme**
+
+Dizilerin elemanlarına erişmek için indeks numaraları kullanılır. C# dizilerinde indeks numaraları 0'dan başlar. Dizi
+elemanlarına erişirken, dizi adı ve indeks numarası köşeli parantez içinde belirtilir.
+
+Örneğin:
+
+```csharp
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+// Dizi elemanlarına erişim
+int firstNumber = numbers[0]; // 10
+int thirdNumber = numbers[2]; // 30
+
+// Dizi elemanlarını değiştirme
+numbers[1] = 25; // 20, 25 ile değiştirildi
+```
+
+**Dizi Boyutu ve Uzunluğu**
+
+Dizi boyutu, dizi oluşturulurken belirtilen eleman sayısıdır. Dizi uzunluğu ise dizinin kaç eleman içerdiğini döndüren
+bir özelliktir.
+
+Örneğin:
+
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+
+int arraySize = numbers.Length; // 5, dizinin boyutu
+```
+
+**Çok Boyutlu Diziler**
+
+C# dilinde diziler, tek boyutlu veya çok boyutlu olabilir. Tek boyutlu diziler, tek bir indeks numarasıyla erişilen veri
+yapılarıdır. Çok boyutlu diziler ise iki veya daha fazla indeks numarasıyla erişilen veri yapılarıdır. Çok boyutlu
+diziler, matrisleri temsil etmek için kullanılır.
+
+Örneğin:
+
+```csharp
+// 2 boyutlu bir dizi tanımlama ve oluşturma
+int[,] matrix = new int[2, 3]; // 2 satır, 3 sütun
+
+// 3 boyutlu bir dizi tanımlama ve oluşturma
+int[,,] cube = new int[3, 4, 5]; // 3 boyutlu bir küp
+```
+
+**Dizi Döngüleri**
+
+Dizilerle çalışırken, döngülerin kullanılması sıkça görülen bir durumdur. Döngüler sayesinde dizinin tüm elemanlarına
+kolayca erişmek ve işlem yapmak mümkündür.
+
+Örneğin:
+
+```csharp
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+// For döngüsü ile dizi elemanlarına erişim
+for (int i = 0; i < numbers.Length; i++)
+{
+    Console.WriteLine(numbers[i]);
+}
+
+// Foreach döngüsü ile dizi elemanlarına erişim
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}
+```
+
+**Dizi Sınırları**
+
+Dizilerin boyutu oluşturulduktan sonra değiştirilemez. Bu nedenle, dizinin sınırlarını aşmaktan kaçınılmalıdır.
+Dizilerin sınırlarını aşmak "IndexOutOfRangeException" hatasına neden olur.
+
+Örneğin:
+
+```csharp
+int[] numbers = { 1, 2, 3, 4, 5 };
+
+// Hatalı kullanım, dizinin sınırları aşıldı
+int invalidNumber = numbers[10]; // IndexOutOfRangeException hatası
+```
+
+C# dilinde diziler, verilerin gruplandırılması ve erişilmesi için önemli bir veri yapısıdır. Dizi kullanarak benzer
+türdeki verileri düzenlemek ve işlemek daha kolay ve verimli bir şekilde yapılabilir. Dizilerle çalışırken, dikkatli
+olunmalı ve dizinin sınırlarını aşmaktan kaçınılmalıdır. Ayrıca, C# dilinde List<T> gibi dinamik koleksiyonlar da
+kullanılarak daha esnek veri yapıları oluşturulabilir.
+
+### Referans Tipler
+
+C# Referans Tipleri
+
+C# dilinde, veri tipleri iki ana kategoriye ayrılır: değer türleri (value types) ve referans türleri (reference types).
+Referans tipleri, verilerin bellekteki adreslerini içerir ve bu adresler üzerinden veriye erişilir. Değer tipleri ise
+verilerin kendisini içerir ve doğrudan değere erişilir.
+
+**Referans Tipleri ve Bellek Yapısı**
+
+Referans tipleri, heap adı verilen bellek bölgesinde saklanır. Bellekte bir nesne oluşturulduğunda, nesne değeri stack
+alanında oluşturulan referansı (adresi) heap alanında depolanır. Daha sonra, bu referans aracılığıyla heap alanında
+tutulan veriye erişilir. Birden fazla referans aynı nesneyi işaret edebilir, bu nedenle referans tipleri "paylaşımlı"
+olarak kabul edilir.
+
+Örneğin:
+
+```csharp
+// Referans türünde bir nesne oluşturma
+Person person1 = new Person(); // Person, referans türü olan bir sınıftan türetilmiş olmalıdır
+Person person2 = person1; // person2, person1'in referansını alır
+```
+
+**Referans Tipleri ve Metodlar**
+
+Referans türleri, metodlara parametre olarak gönderildiğinde ve metodlar tarafından döndürüldüğünde oldukça
+kullanışlıdır. Metoda gönderilen bir referans, orijinal nesneyi değiştirmeye izin verir ve bu değişiklikler orijinal
+nesneyi etkiler. Ancak değer türlerinde böyle bir durum söz konusu değildir.
+
+Örneğin:
+
+```csharp
+// Referans türünde bir nesne oluşturma
+List<string> names = new List<string>() { "Alice", "Bob", "Carol" };
+
+// Referans türünü metodun parametresine gönderme
+AddName(names, "Dave");
+
+// Metot, orijinal nesneyi değiştirir
+void AddName(List<string> list, string name)
+{
+    list.Add(name);
+}
+```
+
+**Null Değer ve Referans Tipleri**
+
+Referans tipleri, null değerini de alabilirler. Bir referans değişkeni, bir nesneye referans etmiyorsa (boşsa), null
+değerine sahip olur. Null değer, bir referansın hiçbir şeyi göstermediğini ifade eder.
+
+Örneğin:
+
+```csharp
+Person person = null; // Person referansı, hiçbir nesneyi göstermiyor
+```
+
+Null referanslarla çalışırken, null kontrolü yapmak önemlidir. Null referanslar üzerinde işlem yapılmak istendiğinde "
+NullReferenceException" hatası alınır.
+
+Örneğin:
+
+```csharp
+Person person = null;
+
+if (person != null)
+{
+    // Null olmayan bir nesne üzerinde işlem yapma
+}
+```
+
+Referans tipleri, C# dilinde farklı yapıların oluşturulması ve veri yönetimi için önemli bir rol oynar. Referans
+tipleri, bellek kullanımı ve performans açısından dikkatli kullanılmalı ve gereksiz yere oluşturulmamalıdır. Özellikle
+büyük veri yapıları ve nesneler için referans tipleri kullanmak daha uygun olabilir. Ancak dikkatli olunmadığı takdirde
+null referans hataları gibi problemlerle karşılaşmak mümkündür. Bu nedenle, null kontrolü ve doğru kullanımı dikkate
+alarak referans tipleri ile çalışmak önemlidir.
