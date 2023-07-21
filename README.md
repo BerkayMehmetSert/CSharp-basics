@@ -15,6 +15,7 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [Diziler](#diziler)
 * [Referans Tipler](#referans-tipler)
 * [Operatörler](#operatörler)
+* [Koşullu İfadeler](#koşullu-ifadeler)
 
 ### CSharp Nedir
 
@@ -686,3 +687,126 @@ int result = (x > y) ? x : y; // x, y'den büyükse x'i, değilse y'yi döndür�
 C# dilinde daha birçok operatör bulunmaktadır. Operatörler, programların veri işleme ve kontrol akışını yönetmek için
 temel araçlardır. Doğru ve etkili bir şekilde operatörleri kullanarak, programlama dili olan C#'da çeşitli işlemleri
 gerçekleştirebilir ve daha karmaşık uygulamalar oluşturabilirsiniz.
+
+### Koşullu İfadeler
+
+C# dilinde koşullu ifadeler, belirli bir koşulun doğru veya yanlış olduğuna bağlı olarak farklı kod bloklarının
+çalıştırılmasını sağlar. Bu tür yapılar, programların farklı senaryolara göre çalışmasını ve çeşitli durumlara göre
+farklı işlemler yapmasını sağlar.
+
+1. **if İfadesi:**
+
+if ifadesi, belirtilen koşulun doğru olduğu durumda ilgili kod bloğunun çalıştırılmasını sağlar. Eğer koşul yanlışsa, if
+bloğu atlanır.
+
+Örneğin:
+
+```csharp
+int age = 20;
+
+if (age >= 18)
+{
+    Console.WriteLine("Ehliyet alabilirsiniz.");
+}
+```
+
+2. **if-else İfadesi:**
+
+if-else ifadesi, belirtilen koşulun doğru olduğu durumda bir kod bloğunu, yanlış olduğu durumda ise başka bir kod
+bloğunu çalıştırır.
+
+Örneğin:
+
+```csharp
+int score = 85;
+
+if (score >= 60)
+{
+    Console.WriteLine("Geçtiniz.");
+}
+else
+{
+    Console.WriteLine("Kaldınız.");
+}
+```
+
+3. **if-else if-else İfadesi (Nested if):**
+
+Birden fazla koşulu kontrol etmek için if-else if-else yapısı kullanılır. Bu yapıda her koşul sırayla değerlendirilir ve
+doğru olan kod bloğu çalıştırılır. Eğer hiçbir koşul sağlanmazsa, son olarak else bloğu çalışır.
+
+Örneğin:
+
+```csharp
+int score = 75;
+
+if (score >= 90)
+{
+    Console.WriteLine("AA");
+}
+else if (score >= 80)
+{
+    Console.WriteLine("BA");
+}
+else if (score >= 70)
+{
+    Console.WriteLine("BB");
+}
+else if (score >= 60)
+{
+    Console.WriteLine("CB");
+}
+else
+{
+    Console.WriteLine("Kaldınız.");
+}
+```
+
+4. **switch-case İfadesi:**
+
+switch-case ifadesi, bir değişkenin değerine göre farklı durumları kontrol etmek için kullanılır. Bir değer, farklı case
+durumları ile karşılaştırılır ve uygun olan case bloğu çalıştırılır.
+
+Örneğin:
+
+```csharp
+int dayOfWeek = 3;
+
+switch (dayOfWeek)
+{
+    case 1:
+        Console.WriteLine("Pazartesi");
+        break;
+    case 2:
+        Console.WriteLine("Salı");
+        break;
+    case 3:
+        Console.WriteLine("Çarşamba");
+        break;
+    // Diğer günler için case blokları eklenir.
+    default:
+        Console.WriteLine("Geçersiz gün");
+        break;
+}
+```
+
+Yeni switch-case gösterimi:
+
+```csharp
+int dayOfWeek = 3;
+
+string dayName = dayOfWeek switch
+{
+    1 => "Pazartesi",
+    2 => "Salı",
+    3 => "Çarşamba",
+    _ => "Geçersiz gün"
+};
+
+Console.WriteLine(dayName);
+```
+
+Koşullu ifadeler, C# dilinde programların farklı şartlara göre farklı davranışlar sergilemesini sağlar. Doğru ve
+mantıklı koşullar belirleyerek, programların esnek ve akıllıca davranışlar sergilemesini sağlayabilirsiniz. Koşullu
+ifadeler, kullanıcıdan alınan girdilere veya çeşitli verilere bağlı olarak programın akışını yönlendirmek ve karar
+vermek için yaygın olarak kullanılır.
