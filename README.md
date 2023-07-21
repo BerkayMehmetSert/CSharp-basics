@@ -9,6 +9,9 @@ Bu repository C# temellerini öğrenmek isteyenler için hazırlanmıştır.
 * [CSarp Nedir](#csharp-nedir)
 * [.Net Framework Nedir](#net-framework-nedir)
 * [Değişkenler](#değişkenler)
+* [Veri Tipleri ve Kullanımı](#veri-tipleri-ve-kullanımı)
+* [Veri Dönüşümleri](#veri-dönüşümleri)
+* [Null Değerli Türler](#null-değerli-türler)
 
 ### CSharp Nedir
 
@@ -162,3 +165,230 @@ bool isAdult = age >= 18; // Mantıksal değeri hesaplar
 C# dilinde değişkenler, programlama dillerinde temel ve önemli bir kavramdır. Değişkenler, veri manipülasyonu,
 hesaplamalar ve sonuçların saklanması için kullanılır. Programlama yaparken, değişkenlerin veri türlerine dikkat ederek
 ve anlamlı isimler vererek kodların daha okunabilir ve anlaşılır olmasını sağlamak önemlidir.
+
+### Veri Tipleri ve Kullanımı
+
+C# (C sharp), güçlü bir tip güvenliğine sahip olan bir programlama dilidir. Bu nedenle, C# dilinde kullanılan veri
+tipleri, değişkenlerin alabileceği değerlerin türlerini belirtmek için önemlidir. C# dilinde temel veri tipleri ve
+bunların kullanımı şunlardır:
+
+1. **Tam Sayılar (Integers):**
+
+- int: En yaygın kullanılan tam sayı veri tipidir. 4 baytlık bellek alanı kullanır ve genellikle -2,147,483,648 ile
+  2,147,483,647 arasındaki değerleri alır.
+
+Örneğin:
+
+```csharp
+int age = 25;
+```
+
+- short: 2 baytlık bellek alanı kullanır ve genellikle -32,768 ile 32,767 arasındaki değerleri alır.
+
+Örneğin:
+
+```csharp
+short temperature = -10;
+```
+
+- long: 8 baytlık bellek alanı kullanır ve genellikle -9,223,372,036,854,775,808 ile 9,223,372,036,854,775,807
+  arasındaki değerleri alır.
+
+Örneğin:
+
+```csharp
+long population = 7_600_000_000;
+```
+
+2. **Ondalıklı Sayılar (Floating-Point Numbers):**
+
+double: Çift hassasiyetli ondalıklı sayıları temsil eder. 8 baytlık bellek alanı kullanır ve genellikle 15-16 basamak
+hassasiyeti vardır.
+
+Örneğin:
+
+```csharp
+double pi = 3.14159;
+```
+
+- float: Tek hassasiyetli ondalıklı sayıları temsil eder. 4 baytlık bellek alanı kullanır ve genellikle 7 basamak
+  hassasiyeti vardır.
+
+Örneğin:
+
+```csharp
+float temperature = 27.5f; // 'f' ile float türü olduğu belirtiliyor
+```
+
+3. **Metin (Strings):**
+
+string: Metinleri temsil eder ve çift tırnaklar (" ") içine yazılır. String veri tipi, değişebilir ve geniş bir karakter
+kümesini destekler.
+
+Örneğin:
+
+```csharp
+string name = "John Doe";
+```
+
+4. **Mantıksal Değerler (Boolean):**
+
+bool: Doğru veya yanlış değerlerini temsil eder. 1 baytlık bellek alanı kullanır ve sadece iki değeri alabilir: "true"
+veya "false".
+
+Örneğin:
+
+```csharp
+bool isStudent = true;
+```
+
+5. **Karakter (Character):**
+
+- char: Tek bir karakteri temsil eder ve tek tırnaklar (' ') içine yazılır. 2 baytlık bellek alanı kullanır ve
+  genellikle Unicode karakterlerini destekler.
+
+Örneğin:
+
+```csharp
+char grade = 'A';
+```
+
+6. **Diğer Veri Tipleri:**
+
+- byte: 1 baytlık bellek alanı kullanır ve 0 ile 255 arasındaki değerleri alır.
+
+Örneğin:
+
+```csharp
+byte numberOfChildren = 3;
+```
+
+- decimal: Kesirli sayıları temsil eder ve finansal hesaplamalar için kullanılır. 16 baytlık bellek alanı kullanır ve
+  genellikle para birimleri için tercih edilir.
+
+Örneğin:
+
+```csharp
+decimal price = 24.99m; // "m" ile decimal türü olduğu belirtiliyor
+```
+
+- DateTime: Tarih ve saat değerlerini temsil eder.
+
+Örneğin:
+
+```csharp
+DateTime currentDate = DateTime.Now;
+```
+
+C# dilinde farklı veri tipleri, uygulama gereksinimlerine ve işlemlere uygun olarak seçilmelidir. Doğru veri tiplerini
+kullanmak, bellek kullanımını optimize eder ve doğru sonuçlar almayı sağlar. Ayrıca, veri türleri, veri dönüşümleri ve
+tür uyumsuzluklarına dikkat edilerek uygulamanın sağlamlığı ve performansı artırılabilir.
+
+### Veri Dönüşümleri
+
+C# dilinde veri dönüşümleri, bir veri tipini başka bir veri tipine dönüştürme işlemidir. Bu işlem, farklı veri tipleri
+arasında veri alışverişi yapmak veya farklı hesaplamalar yapmak için önemlidir.
+
+1. **Otomatik Dönüşüm (Implicit Conversion):**
+
+Otomatik dönüşüm, veri kaybı riski olmadan daha büyük bir veri tipinden daha küçük bir veri tipine dönüşüm yapılmasıdır.
+C# dilinde, daha küçük bir veri tipi otomatik olarak daha büyük bir veri tipine dönüştürülebilir. Bu dönüşümde, veri
+kaybı olmadan dönüşüm gerçekleşir ve ekstra bir işlem yapmaya gerek kalmaz.
+
+Örneğin:
+
+```csharp
+int intValue = 10;
+long longValue = intValue; // Otomatik dönüşüm, int'ten long'a
+```
+
+2. **Explicit Dönüşüm (Explicit Conversion):**
+
+Explicit dönüşüm, veri kaybı riski olan veya doğrudan dönüşüm yapılamayan durumlarda kullanılır. Bu dönüşümde, veri
+kaybını kabul ederek veya belirli dönüşüm yöntemlerini kullanarak dönüşüm yapılır. Explicit dönüşüm, kullanıcı
+tarafından açıkça belirtilmelidir.
+
+Örneğin:
+
+```csharp
+double doubleValue = 3.14;
+int intValue = (int)doubleValue; // Explicit dönüşüm, double'dan int'e
+```
+
+**3. Convert Sınıfı Kullanımı:**
+
+C# dilinde veri dönüşümleri için Convert sınıfı da kullanılabilir. Bu sınıf, farklı veri tipleri arasında dönüşüm yapmak
+için yöntemler sağlar.
+
+Örneğin:
+
+```csharp
+string numericString = "123";
+int intValue = Convert.ToInt32(numericString);
+```
+
+**4. Parse ve TryParse Yöntemleri:**
+
+Metin verilerini sayısal verilere dönüştürmek için Parse veya TryParse yöntemleri kullanılabilir. Parse yöntemi, metin
+veriyi doğrudan sayısal veriye dönüştürürken, TryParse yöntemi ise başarılı bir dönüşüm olup olmadığını kontrol ederek
+dönüşüm yapar.
+
+Örneğin:
+
+```csharp
+string numericString = "456";
+int intValue = int.Parse(numericString); // Parse yöntemi
+int result;
+if (int.TryParse(numericString, out result)) // TryParse yöntemi
+{
+    // Başarılı dönüşüm
+}
+else
+{
+    // Başarısız dönüşüm
+}
+```
+
+Veri dönüşümleri, C# dilinde önemli bir konudur ve doğru kullanıldığında programın performansını ve esnekliğini
+artırabilir. Ancak dikkatsizce yapılan dönüşümler, veri kaybına, hatalara veya beklenmeyen sonuçlara neden olabilir. Bu
+nedenle, uygun dönüşüm yöntemlerini ve tür uyumsuzluklarını dikkate alarak veri dönüşümlerinin yapılması önemlidir.
+
+### Null Değerli Türler
+
+C# 2.0 sürümüyle birlikte, değer türü olan değişkenlerin null değerini almasına izin veren "nullable" türler
+tanıtılmıştır. Değer türleri, null değerini alamayan ve bir değeri zorunlu olarak taşıyan türlerdir (örneğin, int,
+double, bool). Ancak bazı durumlarda, bir değer türünün null değerini alması gerekebilir, özellikle veritabanlarından
+veya diğer dış kaynaklardan veri alırken. Nullable type, bu tür durumları ele almak için kullanılır.
+
+Nullable type, değer türüne `"?"` karakteri ekleyerek tanımlanır. Örneğin, "int?" nullable bir integer türüdür ve null
+değerini kabul edebilir.
+
+Örneğin:
+
+```csharp
+int? nullableInt = null; // Nullable integer, null değer alabilir
+```
+
+Null değeri kabul eden değer türleri, bir değer atanmadığı durumlarda varsayılan olarak null değeri alır.
+
+Örneğin:
+
+```csharp
+int? age = null; // null değer atandı
+```
+
+Dikkat edilmesi gereken önemli bir nokta, nullable type'ların gereksiz yere kullanılmasından kaçınmaktır. Çünkü nullable
+type'lar, normal değer türlerinden daha fazla bellek kullanımına ve performans kaybına neden olabilir. Bu nedenle, bir
+değişkenin null değerini alması gerekiyorsa ve bununla ilgili kontrol yapılması önemliyse, nullable type kullanmak
+mantıklıdır. Ancak null değerini alması beklenmiyorsa, normal değer türleri tercih edilmelidir.
+
+Örneğin:
+
+```csharp
+int? count = 10; // Nullable kullanımı gereksiz
+int totalCount = 0; // Normal değer türü kullanımı
+```
+
+Nullable type, C# dilinde değer türlerinin null değerini kabul etmesini sağlayan ve veri alışverişi sırasında kullanılan
+önemli bir özelliktir. Doğru kullanıldığında, null değerleriyle çalışmak daha güvenli ve esnek kod yazmanıza yardımcı
+olabilir. Ancak, gereksiz kullanımdan kaçınarak performans açısından da dikkatli olunmalıdır.
